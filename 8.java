@@ -1,42 +1,42 @@
-ALGORITHM Dijkstra(G, s)
+// ALGORITHM Dijkstra(G, s)
 
-// Dijkstra's algorithm for single-source shortest paths
+// // Dijkstra's algorithm for single-source shortest paths
 
-// Input:
-//    A weighted connected graph G = (V, E) with nonnegative weights
-//    and its source vertex s
+// // Input:
+// //    A weighted connected graph G = (V, E) with nonnegative weights
+// //    and its source vertex s
 
-// Output:
-//    The length dv of a shortest path from s to v
-//    for every vertex v in V
+// // Output:
+// //    The length dv of a shortest path from s to v
+// //    for every vertex v in V
 
-Initialize(Q)          // Initialize priority queue to empty
+// Initialize(Q)          // Initialize priority queue to empty
 
-for every vertex v in V do
-    dv ← ∞
-    pv ← null
-    Insert(Q, v, dv)   // Initialize vertex priority
+// for every vertex v in V do
+//     dv ← ∞
+//     pv ← null
+//     Insert(Q, v, dv)   // Initialize vertex priority
 
-ds ← 0
-Decrease(Q, s, ds)     // Update priority of source vertex
+// ds ← 0
+// Decrease(Q, s, ds)     // Update priority of source vertex
 
-VT ← ∅
+// VT ← ∅
 
-for i ← 0 to |V| − 1 do
+// for i ← 0 to |V| − 1 do
 
-    u* ← DeleteMin(Q)  // Vertex with minimum distance
+//     u* ← DeleteMin(Q)  // Vertex with minimum distance
 
-    VT ← VT ∪ {u*}
+//     VT ← VT ∪ {u*}
 
-    for every vertex u in V − VT
-        that is adjacent to u* do
+//     for every vertex u in V − VT
+//         that is adjacent to u* do
 
-        if du* + w(u*, u) < du then
-            du ← du* + w(u*, u)
-            pu ← u*
-            Decrease(Q, u, du)
+//         if du* + w(u*, u) < du then
+//             du ← du* + w(u*, u)
+//             pu ← u*
+//             Decrease(Q, u, du)
 
-return d
+// return d
 
 
 
