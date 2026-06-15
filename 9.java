@@ -1,21 +1,21 @@
-ALGORITHM Floyd(W[1..n, 1..n])
+// ALGORITHM Floyd(W[1..n, 1..n])
 
-// Implements Floyd's algorithm for the all-pairs shortest-paths problem
+// // Implements Floyd's algorithm for the all-pairs shortest-paths problem
 
-// Input:
-//    The weight matrix W of a graph with no negative-length cycle
+// // Input:
+// //    The weight matrix W of a graph with no negative-length cycle
 
-// Output:
-//    The distance matrix of the shortest paths' lengths
+// // Output:
+// //    The distance matrix of the shortest paths' lengths
 
-D ← W          // Not necessary if W can be overwritten
+// D ← W          // Not necessary if W can be overwritten
 
-for k ← 1 to n do
-    for i ← 1 to n do
-        for j ← 1 to n do
-            D[i, j] ← min(D[i, j], D[i, k] + D[k, j])
+// for k ← 1 to n do
+//     for i ← 1 to n do
+//         for j ← 1 to n do
+//             D[i, j] ← min(D[i, j], D[i, k] + D[k, j])
 
-return D
+// return D
 
 
 
