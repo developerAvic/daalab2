@@ -1,46 +1,46 @@
-### Sum of Subsets Algorithm
+// ### Sum of Subsets Algorithm
 
-**1. Mark Current Element as Selected**
+// **1. Mark Current Element as Selected**
 
-* Set `x[k] = 1`.
+// * Set `x[k] = 1`.
 
-**2. Check if Adding `w[k]` to Current Sum Matches Target**
+// **2. Check if Adding `w[k]` to Current Sum Matches Target**
 
-* If `s + w[k] == d`, then:
+// * If `s + w[k] == d`, then:
 
-  * A valid subset is found.
-  * Increment and print the subset count.
-  * Print all elements `i` where `x[i] == 1` (i.e., the selected elements and their categories).
+//   * A valid subset is found.
+//   * Increment and print the subset count.
+//   * Print all elements `i` where `x[i] == 1` (i.e., the selected elements and their categories).
 
-**3. Left Subtree (Include Current Element)**
+// **3. Left Subtree (Include Current Element)**
 
-* If:
+// * If:
 
-  * `k + 1` is a valid index, **and**
-  * `s + w[k] + w[k+1] <= d`
-* Then:
+//   * `k + 1` is a valid index, **and**
+//   * `s + w[k] + w[k+1] <= d`
+// * Then:
 
-  ```text
-  sum_of_subsets(s + w[k], k + 1, rem - w[k])
-  ```
-* This explores the case where the current item is **included** in the subset.
+//   ```text
+//   sum_of_subsets(s + w[k], k + 1, rem - w[k])
+//   ```
+// * This explores the case where the current item is **included** in the subset.
 
-**4. Right Subtree (Exclude Current Element)**
+// **4. Right Subtree (Exclude Current Element)**
 
-* If:
+// * If:
 
-  * `k + 1` is a valid index, **and**
-  * `s + rem - w[k] >= d`, **and**
-  * `s + w[k+1] <= d`
-* Then:
+//   * `k + 1` is a valid index, **and**
+//   * `s + rem - w[k] >= d`, **and**
+//   * `s + w[k+1] <= d`
+// * Then:
 
-  * Set `x[k] = 0` (exclude the current element).
-  * Recur:
+//   * Set `x[k] = 0` (exclude the current element).
+//   * Recur:
 
-    ```text
-    sum_of_subsets(s, k + 1, rem - w[k])
-    ```
-* This explores the case where the current item is **excluded** from the subset.
+//     ```text
+//     sum_of_subsets(s, k + 1, rem - w[k])
+//     ```
+// * This explores the case where the current item is **excluded** from the subset.
 
 
 
