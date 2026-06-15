@@ -1,53 +1,53 @@
-### Hamiltonian Circuit Algorithm
+// ### Hamiltonian Circuit Algorithm
 
-**Step 1: Initialize Path Storage**
+// **Step 1: Initialize Path Storage**
 
-* Create a temporary array `temp` to store the current path during recursion.
+// * Create a temporary array `temp` to store the current path during recursion.
 
-**Step 2: Check Base Case**
+// **Step 2: Check Base Case**
 
-* If all nodes have been visited (`visited == n`) and there is an edge from the current node `st` back to the source node, then:
+// * If all nodes have been visited (`visited == n`) and there is an edge from the current node `st` back to the source node, then:
 
-  * A Hamiltonian Circuit is found.
-  * Call the function:
+//   * A Hamiltonian Circuit is found.
+//   * Call the function:
 
-    ```text
-    path(succ)
-    ```
+//     ```text
+//     path(succ)
+//     ```
 
-    to process or print the circuit.
-  * Return from the function.
+//     to process or print the circuit.
+//   * Return from the function.
 
-**Step 3: Recursive Exploration**
+// **Step 3: Recursive Exploration**
 
-* For every vertex `i` from `0` to `n - 1`:
+// * For every vertex `i` from `0` to `n - 1`:
 
-  * If:
+//   * If:
 
-    * There is an edge from the current node `st` to `i`
+//     * There is an edge from the current node `st` to `i`
 
-      ```text
-      a[st][i] == 1
-      ```
-    * And vertex `i` has not been visited
+//       ```text
+//       a[st][i] == 1
+//       ```
+//     * And vertex `i` has not been visited
 
-      ```text
-      succ[i] == 0
-      ```
-  * Then:
+//       ```text
+//       succ[i] == 0
+//       ```
+//   * Then:
 
-    * Assign `i` as the successor of `st`:
+//     * Assign `i` as the successor of `st`:
 
-      ```text
-      succ[st] = i
-      ```
-    * Copy the `succ` array to `temp` to preserve the current path state.
-    * Recursively continue the search:
+//       ```text
+//       succ[st] = i
+//       ```
+//     * Copy the `succ` array to `temp` to preserve the current path state.
+//     * Recursively continue the search:
 
-      ```text
-      ckt(i, temp, visited + 1)
-      ```
-    * This explores all possible paths that may form a Hamiltonian Circuit.
+//       ```text
+//       ckt(i, temp, visited + 1)
+//       ```
+//     * This explores all possible paths that may form a Hamiltonian Circuit.
 
 
 
