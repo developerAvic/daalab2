@@ -1,25 +1,25 @@
-Algorithm GreedyKnapsack(m, n)
+// Algorithm GreedyKnapsack(m, n)
 
-// p[1:n] and w[1:n] contain the profits and weights
-// respectively of the n objects ordered such that
-// p[i]/w[i] ≥ p[i+1]/w[i+1]
-// m is the knapsack size
-// x[1:n] is the solution vector
+// // p[1:n] and w[1:n] contain the profits and weights
+// // respectively of the n objects ordered such that
+// // p[i]/w[i] ≥ p[i+1]/w[i+1]
+// // m is the knapsack size
+// // x[1:n] is the solution vector
 
-for i ← 1 to n do
-    x[i] ← 0.0          // Initialize solution vector
+// for i ← 1 to n do
+//     x[i] ← 0.0          // Initialize solution vector
 
-U ← m                   // Remaining capacity
+// U ← m                   // Remaining capacity
 
-for i ← 1 to n do
-    if w[i] > U then
-        break
+// for i ← 1 to n do
+//     if w[i] > U then
+//         break
 
-    x[i] ← 1.0          // Take entire object
-    U ← U − w[i]
+//     x[i] ← 1.0          // Take entire object
+//     U ← U − w[i]
 
-if i ≤ n then
-    x[i] ← U / w[i]     // Take fraction of object
+// if i ≤ n then
+//     x[i] ← U / w[i]     // Take fraction of object
 
 
 
