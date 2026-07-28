@@ -807,3 +807,166 @@ public class Dijkstra {
         s.close();
     }
 }
+
+
+----------------------------------------------------------------------------------------------
+
+
+import java.util.Scanner;
+
+public class GreedyKnapsack {
+
+    static int n;
+    static float m, p[], w[];
+
+    static void greedy() {
+
+        float max, u = m, profit = 0;
+        int k = 0, i;
+
+        System.out.println("Items included are:");
+
+        for (i = 0; i < n; i++) {
+
+            max = 0;
+
+            // Choose the item with the highest profit-to-weight ratio
+            for (int j = 0; j < n; j++) {
+                if ((p[j] / w[j]) > max) {
+                    k = j;
+                    max = p[j] / w[j];
+                }
+            }
+
+            // kth element has the highest profit-to-weight ratio
+            if (w[k] > u) {
+
+                System.out.println((k + 1) + " item selected");
+                System.out.println("Fraction selected is " + (u / w[k]));
+
+                profit = profit + (p[k] * u / w[k]);
+                break;
+
+            } else {
+
+                System.out.println((k + 1) + " item is selected");
+                System.out.println("Fraction is 1");
+
+                u = u - w[k];
+                profit = profit + p[k];
+
+                // This item should not be selected in the next iteration
+                p[k] = 0;
+            }
+        }
+
+        System.out.println("Knapsack profit = " + profit);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter the no. of items");
+        n = s.nextInt();
+
+        p = new float[n];
+        w = new float[n];
+
+        System.out.println("Enter the weights of n items");
+        for (int i = 0; i < n; i++) {
+            w[i] = s.nextFloat();
+        }
+
+        System.out.println("Enter the profits of n items");
+        for (int i = 0; i < n; i++) {
+            p[i] = s.nextFloat();
+        }
+
+        System.out.println("Enter the capacity of Knapsack");
+        m = s.nextFloat();
+
+        greedy();
+
+        s.close();
+    }
+}
+
+
+------------------------------------------------------------------------------------------------
+
+
+import java.util.Scanner;
+
+public class TopologicalSorting {
+
+    static int[][] cost = new int[10][10]; // Adjacency matrix
+    static int[] indegree = new int[10];   // Stores in-degree of nodes
+    static int n;                          // Number of vertices
+
+    // Function to calculate in-degree of all vertices
+    static void calculate() {
+
+        for (int i = 0; i < n; i++) {
+            indegree[i] = 0;
+
+            for (int j = 0; j < n; j++) {
+                indegree[i] += cost[j][i]; // Summing column-wise to find in-degree
+            }
+        }
+    }
+
+    // Function to perform Topological Sorting using Source Removal method
+    static void sourceRemoval() {
+
+        int[] removed = new int[10];
+
+        System.out.print("Topological ordering is: ");
+
+        for (int i = 0; i < n; i++) {
+
+            calculate(); // Recalculate in-degrees after each removal
+
+            int j;
+            for (j = 0; j < n; j++) {
+                if (removed[j] == 0 && indegree[j] == 0) {
+                    // Found a source vertex
+                    break;
+                }
+            }
+
+            if (j == n) {
+                // No source found, graph contains a cycle
+                System.out.println("Graph is cyclic, so no solution.");
+                return;
+            }
+
+            System.out.print(j + " ");
+            removed[j] = 1;
+
+            // Remove all outgoing edges from vertex j
+            for (int k = 0; k < n; k++) {
+                cost[j][k] = 0;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        n = s.nextInt();
+
+        System.out.println("Enter the cost matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cost[i][j] = s.nextInt();
+            }
+        }
+
+        sourceRemoval();
+
+        s.close();
+    }
+}
