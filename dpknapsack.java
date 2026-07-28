@@ -1,35 +1,3 @@
-// ALGORITHM DPKnapsack(n, m, p, w)
-
-// # Function: Solves the 0/1 Knapsack Problem using Dynamic Programming
-
-// # Input:
-// #   n → Number of items
-// #   m → Knapsack capacity
-// #   p[1..n] → Profits of items
-// #   w[1..n] → Weights of items
-
-// # Output:
-// #   Optimal profit and selected items
-
-// for i ← 0 to n do
-//     for j ← 0 to m do
-
-//         if i = 0 or j = 0 then
-//             V[i, j] ← 0
-
-//         else if j < w[i] then
-//             V[i, j] ← V[i−1, j]
-
-//         else
-//             V[i, j] ← max(
-//                           V[i−1, j],
-//                           p[i] + V[i−1, j−w[i]]
-//                          )
-
-// return V
-
-
-
 import java.util.Scanner;
 
 public class DPKnapsack {
