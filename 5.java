@@ -1,54 +1,7 @@
-import java.util.Scanner;
-
-public class MstPrim {
-
-    static void prim(int cost[][], int n, int source) {
-
-        int[] tvertex = new int[n];
-        int a = 0, b = 0, min, mincost = 0, ne = 0;
-
-        // Start from the source vertex
-        tvertex[source] = 1;
-
-        while (ne < n - 1) {
-
-            // Find the nearest neighbour
-            min = Integer.MAX_VALUE;
-
-            for (int i = 0; i < n; i++) {
-                if (tvertex[i] == 1) {
-
-                    for (int j = 0; j < n; j++) {
-                        if (cost[i][j] < min && tvertex[j] == 0) {
-                            min = cost[i][j];
-                            a = i;
-                            b = j;
-                        }
-                    }
-                }
-            }
-
-            // Include nearest neighbour 'b' into MST
-            System.out.println(
-                "Pipeline from city " + a +
-                " to city " + b +
-                " and the cost " + min + " units"
-            );
-
-            tvertex[b] = 1;
-            ne++;
-            mincost += min;
-        }
-
-        System.out.println(
-            "Minimum cost of urban water supply networks " +
-            mincost + " units"
-        );
-    }
-
+import java.util.*;
+class Main {
     public static void main(String[] args) {
-
-        Scanner s = new Scanner(System.in);
+         Scanner s = new Scanner(System.in);
 
         System.out.println("Enter the no. of Cities");
         int n = s.nextInt();
@@ -68,11 +21,35 @@ public class MstPrim {
             }
         }
 
-        System.out.println("Enter the source city");
+        System.out.print("Enter the source city: ");
         int source = s.nextInt();
 
         prim(c, n, source);
 
-        s.close();
+    }
+    
+    static void prim(int[][]cost, int n, int source){
+        int[]visited = new int[n];
+        int a=0, b=0, ne=0, mincost=0;
+        visited[source] = 1;
+        while(ne<n-1){
+            int min = Integer.MAX_VALUE;
+            for(int i = 0; i<n; i++){
+                if(visited[i] == 1){
+                    for(int j = 0 ; j<n; j++){
+                        if(cost[i][j] < min && visited[j] == 0){
+                            min = cost[i][j];
+                            a=i;
+                            b=j;
+                        }
+                    }
+                }
+            }
+            System.out.println(a + " to " + b + " cost = " + min);
+            mincost += min;
+            visited[b] = 1;
+            ne++;
+        }
+        System.out.println("min cost is: " +mincost);
     }
 }
