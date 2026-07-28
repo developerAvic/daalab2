@@ -1,24 +1,3 @@
-// ALGORITHM Floyd(W[1..n, 1..n])
-
-// // Implements Floyd's algorithm for the all-pairs shortest-paths problem
-
-// // Input:
-// //    The weight matrix W of a graph with no negative-length cycle
-
-// // Output:
-// //    The distance matrix of the shortest paths' lengths
-
-// D ← W          // Not necessary if W can be overwritten
-
-// for k ← 1 to n do
-//     for i ← 1 to n do
-//         for j ← 1 to n do
-//             D[i, j] ← min(D[i, j], D[i, k] + D[k, j])
-
-// return D
-
-
-
 import java.util.Scanner;
 
 public class Floyd {
@@ -45,10 +24,6 @@ public class Floyd {
         n = s.nextInt();
 
         int[][] cost = new int[n][n];
-
-        // Enter the cost matrix
-        // 0 for principal diagonal
-        // 999 for no direct edge
 
         System.out.println("Enter the travel time between subway lines");
 
